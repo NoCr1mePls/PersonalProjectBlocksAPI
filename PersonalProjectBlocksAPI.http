@@ -1,0 +1,6 @@
+@PersonalProjectBlocksAPI_HostAddress = http://localhost:5063
+
+GET {{PersonalProjectBlocksAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

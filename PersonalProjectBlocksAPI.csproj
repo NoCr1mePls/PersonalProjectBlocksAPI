@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>5b154b56-aa11-4488-aa04-12c12f79985c</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avans.Identity.DapperOrm" Version="1.0.3" />
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.1" />
+  </ItemGroup>
+
+</Project>
