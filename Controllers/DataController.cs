@@ -25,18 +25,17 @@ namespace SmartHealth.WebApi.Controllers
         }
 
         /// <summary>
-        /// Sets the given json value in the database
+        /// Stores the world in the database
         /// </summary>
-        /// <param name="jsonValue">The world</param>
-        /// <returns>Yay or nay</returns>
-        [HttpPost]
+        /// <param name="objects">The list of 2D objects to be stored</param>
+        /// <returns>Result</returns>
+        [HttpPost("WorldObjects/{EnvironmentId}", Name = "Store2DObjects")]
         [Authorize]
-        public async Task<ActionResult> StoreNew([FromBody]object jsonValue)
+        public async Task<ActionResult> StoreWorld(Object2DDto[] objects, string EnvironmentId)
         {
-            if (jsonValue == null) return BadRequest();
             try
             {
-                await repo.InsertAsync(jsonObject: jsonValue.ToString());
+                await repo.Insert2DObjects(objects, EnvironmentId);
                 return Created();
             }
             catch (Exception ex)

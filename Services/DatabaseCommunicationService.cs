@@ -8,13 +8,18 @@ namespace PersonalProjectBlocksAPI.Services
     public class DatabaseCommunicationService(string connectionString) : IDatabaseRepository
     {
         ///<inheritdoc/>
-        public async Task InsertAsync(string jsonObject)
+        public async Task Insert2DObjects(Object2DDto[] objects, string EnvironmentId)
         {
             using (var sqlConnection = new SqlConnection(connectionString))
             {
-                await sqlConnection.ExecuteAsync(
-                    ""
-                    );
+                await sqlConnection.ExecuteAsync("DELETE FROM [Object2D] WHERE Environment2DId = @EnvironmentId", new { EnvironmentId});
+                if (objects.Length > 0)
+                {
+                    await sqlConnection.ExecuteAsync(
+                        "INSERT INTO [Object2D] (Id, PrefabId, PositionX, PositionY, ScaleX, ScaleY, RotationZ, SortingLayer,Environment2DId) VALUES (@Id, @PrefabId, @PositionX, @PositionY, @ScaleX, @ScaleY, @RotationZ, @SortingLayer, @Environment2DId) "
+                        , objects
+                        );
+                }
             }
         }
 

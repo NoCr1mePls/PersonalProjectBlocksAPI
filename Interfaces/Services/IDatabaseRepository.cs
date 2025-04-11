@@ -1,5 +1,4 @@
 ﻿using Dtos;
-using System.Data.Common;
 
 namespace SmartHealth.WebApi.Interfaces.Services
 {
@@ -10,7 +9,7 @@ namespace SmartHealth.WebApi.Interfaces.Services
         /// </summary>
         /// <param name="jsonObject">World</param>
         /// <returns></returns>
-        Task InsertAsync(string jsonObject);
+        Task Insert2DObjects(Object2DDto[] objects, string EnvId);
 
         /// <summary>
         /// Get the environment2D's of the given userId
