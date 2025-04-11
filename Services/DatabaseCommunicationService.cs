@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Dtos;
 using Microsoft.Data.SqlClient;
 using SmartHealth.WebApi.Interfaces.Services;
 
@@ -18,12 +19,13 @@ namespace PersonalProjectBlocksAPI.Services
         }
 
         ///<inheritdoc/>
-        public async Task<string?> ReadAsync(string id)
+        public async Task<IEnumerable<Environment2DDto>> GetEnvironment2D(string id)
         {
             using (var sqlConnection = new SqlConnection(connectionString))
             {
-                return await sqlConnection.QuerySingleOrDefaultAsync<string>(
-                        ""
+                return await sqlConnection.QueryAsync<Environment2DDto>(
+                        sql: "SELECT * FROM [Environment2D] WHERE UserId = @id;"
+                        , new { id }
                 );
             }
         }

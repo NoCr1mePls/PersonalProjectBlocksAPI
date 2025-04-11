@@ -1,4 +1,5 @@
-﻿using System.Data.Common;
+﻿using Dtos;
+using System.Data.Common;
 
 namespace SmartHealth.WebApi.Interfaces.Services
 {
@@ -12,11 +13,11 @@ namespace SmartHealth.WebApi.Interfaces.Services
         Task InsertAsync(string jsonObject);
 
         /// <summary>
-        /// Read world
+        /// Get the environment2D's of the given userId
         /// </summary>
         /// <param name="id">of user</param>
-        /// <returns>world json</returns>
-        Task<string?> ReadAsync(string id);
+        /// <returns>Environment2D</returns>
+        Task<IEnumerable<Environment2DDto>> GetEnvironment2D(string id);
 
         /// <summary>
         /// Update za world

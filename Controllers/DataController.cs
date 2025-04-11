@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmartHealth.WebApi.Interfaces.Services;
 
@@ -12,12 +13,12 @@ namespace SmartHealth.WebApi.Controllers
         /// Gets the json value of the world
         /// </summary>
         /// <returns>Returns the actionresult with therein the string of the json value</returns>
-        [HttpGet]
+        [HttpGet ("Environments", Name = "Environments")]
         [Authorize]
-        public async Task<ActionResult<IEnumerable<string>>> Get()
+        public async Task<ActionResult<IEnumerable<Environment2DDto>>> GetEnvironments()
         {
-            string result =
-                await repo.ReadAsync(id: auth.GetCurrentAuthenticatedUserID());
+            var result =
+                await repo.GetEnvironment2D(id: auth.GetCurrentAuthenticatedUserID());
             if (result == null)
                 return BadRequest();
             return Ok(result);
