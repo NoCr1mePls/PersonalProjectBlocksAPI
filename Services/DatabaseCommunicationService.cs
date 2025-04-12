@@ -12,7 +12,7 @@ namespace PersonalProjectBlocksAPI.Services
         {
             using (var sqlConnection = new SqlConnection(connectionString))
             {
-                await sqlConnection.ExecuteAsync("DELETE FROM [Object2D] WHERE Environment2DId = @EnvironmentId", new { EnvironmentId});
+                await sqlConnection.ExecuteAsync("DELETE FROM [Object2D] WHERE Environment2DId = @EnvironmentId", new { EnvironmentId });
                 if (objects.Length > 0)
                 {
                     await sqlConnection.ExecuteAsync(
@@ -23,6 +23,29 @@ namespace PersonalProjectBlocksAPI.Services
             }
         }
 
+        public async Task<IEnumerable<Object2DDto>> Get2DObjects(string EnvironmentId)
+        {
+            using (var sqlConnection = new SqlConnection(connectionString))
+            {
+                return await sqlConnection.QueryAsync<Object2DDto>(
+                        sql:
+                        "SELECT * FROM Object2D WHERE Environment2DId = @EnvironmentId"
+                        , new { EnvironmentId }
+                    );
+            }
+        }
+
+        public async Task InsertNewEnvironment(Environment2DDto env, string id)
+        { 
+            env.UserId = id;
+            using (var sqlConnection = new SqlConnection(connectionString))
+            {
+                await sqlConnection.ExecuteAsync(
+                    "INSERT INTO [Environment2D] (Id, Name, UserId) VALUES (@Id, @Name, @UserId)"
+                    ,env
+                    );
+            }
+        }
         ///<inheritdoc/>
         public async Task<IEnumerable<Environment2DDto>> GetEnvironment2D(string id)
         {

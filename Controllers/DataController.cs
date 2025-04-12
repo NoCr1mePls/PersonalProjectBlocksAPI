@@ -9,11 +9,26 @@ namespace SmartHealth.WebApi.Controllers
     [Route("[controller]")]
     public class DataController(IDatabaseRepository repo, IAuthenticationService auth) : ControllerBase
     {
+        [HttpPost("Environments", Name = "NewEnv")]
+        [Authorize]
+        public async Task<ActionResult> StoreNewEnvironment(Environment2DDto env)
+        {
+            try
+            {
+                await repo.InsertNewEnvironment(env, auth.GetCurrentAuthenticatedUserID());
+                return Created();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         /// <summary>
         /// Gets the json value of the world
         /// </summary>
         /// <returns>Returns the actionresult with therein the string of the json value</returns>
-        [HttpGet ("Environments", Name = "Environments")]
+        [HttpGet("Environments", Name = "Environments")]
         [Authorize]
         public async Task<ActionResult<IEnumerable<Environment2DDto>>> GetEnvironments()
         {
@@ -44,6 +59,17 @@ namespace SmartHealth.WebApi.Controllers
             }
         }
 
+        [HttpGet("WorldObjects/{EnvironmentId}", Name = "Get2DObjects")]
+        [Authorize]
+        public async Task<ActionResult<IEnumerable<Environment2DDto>>> GetObjects2D(string EnvironmentId)
+        {
+            var result =
+                await repo.Get2DObjects(EnvironmentId);
+            if (result == null)
+                return BadRequest();
+            return Ok(result);
+        }
+
         /// <summary>
         /// Update values in the DB
         /// </summary>
@@ -51,7 +77,7 @@ namespace SmartHealth.WebApi.Controllers
         /// <returns>Yis or nis</returns>
         [HttpPut]
         [Authorize]
-        public async Task<ActionResult> Update([FromBody]object jsonValue)
+        public async Task<ActionResult> Update([FromBody] object jsonValue)
         {
             if (jsonValue == null) return BadRequest();
             try
