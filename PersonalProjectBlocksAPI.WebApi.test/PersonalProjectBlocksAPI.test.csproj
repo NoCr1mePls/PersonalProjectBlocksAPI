@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PersonalProjectBlocksAPI.WebApi\PersonalProjectBlocksAPI.csproj" />
+    <ProjectReference Include="..\PersonalProjectBlocksAPI\PersonalProjectBlocksAPI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
