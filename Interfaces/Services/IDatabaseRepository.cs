@@ -19,11 +19,6 @@ namespace SmartHealth.WebApi.Interfaces.Services
         Task<IEnumerable<Environment2DDto>> GetEnvironment2D(string id);
 
         Task<IEnumerable<Object2DDto>> Get2DObjects(string EnvironmentId);
-        /// <summary>
-        /// Update za world
-        /// </summary>
-        /// <param name="jsonObject">Update values</param>
-        /// <returns></returns>
-        Task UpdateAsync(string jsonObject);
+        Task DeleteEnvironment(string id);
     }
 }

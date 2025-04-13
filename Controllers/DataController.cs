@@ -70,19 +70,13 @@ namespace SmartHealth.WebApi.Controllers
             return Ok(result);
         }
 
-        /// <summary>
-        /// Update values in the DB
-        /// </summary>
-        /// <param name="jsonValue">update</param>
-        /// <returns>Yis or nis</returns>
-        [HttpPut]
+        [HttpDelete("WorldObjects/{EnvironmentId}", Name = "DeleteEnvironment")]
         [Authorize]
-        public async Task<ActionResult> Update([FromBody] object jsonValue)
+        public async Task<ActionResult> DeleteEnvironment(string environmentId)
         {
-            if (jsonValue == null) return BadRequest();
             try
             {
-                await repo.UpdateAsync(jsonObject: jsonValue.ToString());
+                await repo.DeleteEnvironment(environmentId);
                 return Ok();
             }
             catch (Exception ex)

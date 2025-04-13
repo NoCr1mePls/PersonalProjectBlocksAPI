@@ -58,14 +58,14 @@ namespace PersonalProjectBlocksAPI.Services
             }
         }
 
-        ///<inheritdoc/>
-        public async Task UpdateAsync(string jsonObject)
+        public async Task DeleteEnvironment(string id)
         {
             using (var sqlConnection = new SqlConnection(connectionString))
             {
                 await sqlConnection.ExecuteAsync(
-                    ""
-                    );
+                        sql: "DELETE FROM Object2D WHERE Environment2DId = @id; DELETE FROM Environment2D WHERE Id = @Id"
+                        , new { id }
+                );
             }
         }
     }
