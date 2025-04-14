@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalProjectBlocksAPI", "PersonalProjectBlocksAPI.WebApi\PersonalProjectBlocksAPI.csproj", "{0F5FF4A8-FE5A-CD43-6ACC-910544D26B97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalProjectBlocksAPI.test", "PersonalProjectBlocksAPI.WebApi.test\PersonalProjectBlocksAPI.test.csproj", "{0EBE1022-BDD9-7865-A7B7-F1F93F1777EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalProjectBlocksAPI.test", "PersonalProjectBlocksAPI.WebApi.Tests\PersonalProjectBlocksAPI.test.csproj", "{AF6F7A09-16F8-E88A-F4CD-F3FBB08B77DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +17,15 @@ Global
 		{0F5FF4A8-FE5A-CD43-6ACC-910544D26B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F5FF4A8-FE5A-CD43-6ACC-910544D26B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F5FF4A8-FE5A-CD43-6ACC-910544D26B97}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0EBE1022-BDD9-7865-A7B7-F1F93F1777EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0EBE1022-BDD9-7865-A7B7-F1F93F1777EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0EBE1022-BDD9-7865-A7B7-F1F93F1777EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0EBE1022-BDD9-7865-A7B7-F1F93F1777EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF6F7A09-16F8-E88A-F4CD-F3FBB08B77DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF6F7A09-16F8-E88A-F4CD-F3FBB08B77DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF6F7A09-16F8-E88A-F4CD-F3FBB08B77DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF6F7A09-16F8-E88A-F4CD-F3FBB08B77DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {09288A6C-C21A-4D81-84D6-4DEF1326A2B9}
 	EndGlobalSection
 EndGlobal
